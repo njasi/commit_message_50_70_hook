@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-import sys, re
-from subprocess import check_output
+import sys
 
 def format_commit(commit_message, line_first=20, line_other=72):
     # clean out double spaces and extra newlines
@@ -12,13 +11,13 @@ def format_commit(commit_message, line_first=20, line_other=72):
         line = ""
         while len(commit_words) > 0 and \
                len(line) + len(commit_words[0]) + 1 <= line_len:
-            line += f" {commit_words[0]}"
+            line += f"{commit_words[0]} "
             del commit_words[0]
         line_len = line_other
         lines += [line]
 
     if len(lines) > 1:
-        lines.insert(1, "\nis this actually writing?\n")
+        lines.insert(1, "\n")
 
     return "\n".join(lines)
 
@@ -32,6 +31,5 @@ def main(commit_msg_filepath):
         file.close()
 
 if __name__ == "__main__":
-    pass
     commit_msg_filepath = sys.argv[1]
     main(commit_msg_filepath)
