@@ -2,7 +2,7 @@
 import sys, re
 from subprocess import check_output
 
-def format_commit(commit_message, line_first=50, line_other=72):
+def format_commit(commit_message, line_first=20, line_other=72):
     # clean out double spaces and extra newlines
     commit_words = commit_message.replace("\n", " ").split(" ")
     lines = []
