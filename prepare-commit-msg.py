@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 import sys
 
-def format_commit(commit_message, line_first=20, line_other=72):
+LINE_FIRST = 50
+LINE_OTHER = 70
+
+def format_commit(commit_message):
     # clean out double spaces and extra newlines
     commit_words = commit_message.replace("\n", " ").split(" ")
     lines = []
-    line_len = line_first
+    line_len = LINE_FIRST
 
     while len(commit_words) > 0:
         line = ""
@@ -13,7 +16,7 @@ def format_commit(commit_message, line_first=20, line_other=72):
                len(line) + len(commit_words[0]) + 1 <= line_len:
             line += f"{commit_words[0]} "
             del commit_words[0]
-        line_len = line_other
+        line_len = LINE_OTHER
         lines += [line]
 
     if len(lines) > 1:
@@ -26,11 +29,12 @@ def tab_print(string):
         print(f"\t{line}")
 
 def main(commit_msg_filepath):
-    tab_print("\nFormatting your commit message to the 50-70 rule..\n")
+    print(f"\nFormatting your commit message to the {LINE_FIRST}-{LINE_OTHER} rule..\n")
     with open(commit_msg_filepath, "r+") as file:
         commit_message = file.read()
         result = format_commit(commit_message)
-        tab_print(f"New Commit Message:\n{'='*30}\n{result}\n{'='*30}\n")
+        tab_print(
+            f"New Commit Message:\n{'='*LINE_OTHER}\n{result}\n{'='*LINE_OTHER}\n")
         file.seek(0)
         file.write(result)
         file.close()
