@@ -29,7 +29,7 @@ def tab_print(string):
         print(f"\t{line}")
 
 def main(commit_msg_filepath):
-    print(f"\nFormatting your commit message to the {LINE_FIRST}-{LINE_OTHER} rule..\n")
+    print(f"\nFormatting your commit message to the {LINE_FIRST}-{LINE_OTHER} rule...\n")
     with open(commit_msg_filepath, "r+") as file:
         commit_message = file.read()
         result = format_commit(commit_message)
