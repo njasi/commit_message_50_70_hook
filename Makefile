@@ -10,6 +10,9 @@ create_commit_file:
 run:
 	python3 prepare-commit-msg.py $(TEST_COMMIT_FILE)
 
+set-hook-path:
+	git config core.hooksPath ./hooks
+
 test:
 	make create_commit_file
 	make run
