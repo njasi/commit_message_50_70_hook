@@ -1,0 +1,5 @@
+this is a long 
+
+string to use as a test commit message. This should be broken up into 
+multiple lines with a gap after the first. Unless you have reall long 
+first line settings that is...  
