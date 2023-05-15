@@ -18,7 +18,7 @@ def format_commit(commit_message, line_first=20, line_other=72):
         lines += [line]
 
     if len(lines) > 1:
-        lines.insert(1, "")
+        lines.insert(1, "\nis this actually writing?\n")
 
     return "\n".join(lines)
 
