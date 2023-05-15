@@ -23,10 +23,14 @@ def format_commit(commit_message, line_first=50, line_other=72):
     return "\n".join(lines)
 
 def main(commit_msg_filepath):
-    print("Formatting your commit to the 50-70 rule")
+    print("Formatting your commit to the 50-70 rule...")
     with open(commit_msg_filepath, "r+") as file:
         commit_message = file.read()
-        format_commit(commit_message)
+        result = format_commit(commit_message)
+        print(f"New Commit Message:\n{'='*30}\n{result}\n{'='*30}")
+        file.write(result)
+        print("Done formatting")
+        file.close()
 
 if __name__ == "__main__":
     pass
