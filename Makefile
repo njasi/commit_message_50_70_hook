@@ -11,7 +11,7 @@ run:
 	python3 prepare-commit-msg.py $(TEST_COMMIT_FILE)
 
 apply-hooks:
-	git config --global core.hooksPath ./build
+	git config --global core.hooksPath $(shell pwd)/build
 
 clean:
 	rm -rf build
