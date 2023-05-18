@@ -1,7 +1,6 @@
 TEST_COMMIT_FILE = test_commit.txt
 
-
-create_commit_file:
+create-commit-file:
 	echo "this is a long string to use as a test commit message. \
 	This should be broken up into multiple lines with a gap after \
 	the first. Unless you have reall long first line settings \
@@ -22,7 +21,10 @@ convert:
 	cp hooks/prepare-commit-msg.py build/prepare-commit-msg
 	chmod +x build/prepare-commit-msg
 
-
 test:
 	make create_commit_file
 	make run
+
+install:
+	make convert
+	make apply-hooks
