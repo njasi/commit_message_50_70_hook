@@ -10,8 +10,18 @@ create_commit_file:
 run:
 	python3 prepare-commit-msg.py $(TEST_COMMIT_FILE)
 
-set-hook-path:
-	git config core.hooksPath ./hooks
+apply-hooks:
+	git config --global core.hooksPath ./build
+
+clean:
+	rm -rf build
+
+convert:
+	make clean
+	mkdir build
+	cp hooks/prepare-commit-msg.py build/prepare-commit-msg
+	chmod +x build/prepare-commit-msg
+
 
 test:
 	make create_commit_file
